@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project store</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="header ">
+        <h1 class="header-title">Get started!</h1>
+        <a href="combine-page.html" class="page-link">
+            <div class="combine-button">
+                <h3 class="combine-text">Combine your first look</h3>
+                <div class="header-plus">
+                    <img src="./img/header/Vector.svg" alt="">
+                </div>
+            </div>
+        </a>
+        <div class="p-top">
+            <img src="./img/header/ptop.svg " alt="">
+        </div>
+        <div class="dress">
+            <img src="./img/header/pskirt.svg" alt="">
+        </div>
+        <div class="header-arrow">
+            <img src="./img/header/down.svg" alt="">
+        </div>
+
+        <script>
+            // Додаємо обробник подій для header-arrow
+            document.querySelector('.header-arrow').addEventListener('click', function() {
+                // Знаходимо висоту header
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                // Прокручуємо вниз на висоту header
+                window.scrollBy({
+                    top: headerHeight,
+                    behavior: 'smooth'
+                });
+            });
+        </script>
+    </div>
+
+    <div class="activity ">
+        <div class="container">
+            <h2 class="items-header">New Items!</h2>
+            <img id="prevButton" src="./img/items/left-arrow.svg" alt="Попереднє" class="arrow-button left-arrow">
+            <div id="photoContainer">
+                <a href="https://finesse.us/products/emi-pink-bow-mini-dress?variant=40182913663053" target="_blank">
+                    <img src="./img/items/pdress.png" class="item" style="display: block;">
+                </a>
+                <a href="https://www.italist.com/us/women/clothing/topwear/top/12155476/12323945/blanca-vita/?sembox_source=PinterestUS&utm_source=PinterestUS&utm_content=display" target="_blank">
+                    <img src="./img/items/pinktop.png" class="item" style="display: block;">
+                </a>
+                <a href="https://www.farfetch.com/shopping/women/prada-cleo-shoulder-bag-item-16175632.aspx" target="_blank">
+                    <img src="./img/items/pradabag.png" class="item" style="display: block;">
+                </a>
+                <a href="https://www.stolenstores.com/products/asymmetric-top-stolen-studios?variant=32841933193291" target="_blank">
+                    <img src="./img/items/bezhtop.png" class="item" style="display: block;">
+                </a>
+                <a href="https://finesse.us/products/kimmy-black-mini-skirt?variant=39989560934477" target="_blank">
+                    <img src="./img/items/blackskirt.png" class="item" style="display: block;">
+                </a>
+            </div>
+            <img id="nextButton" src="./img/items/right-arrow.svg" alt="Наступне" class="arrow-button right-arrow">
+        </div>
+
+        <script>
+            // Отримуємо посилання на елементи
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const items = document.querySelectorAll('.item');
+            let currentIndex = 0;
+    
+            // Функція, яка показує наступну фотографію
+            function showNextItem() {
+                items[currentIndex].style.display = 'none'; // Приховуємо поточне зображення
+                currentIndex = (currentIndex + 1) % items.length; // Обчислюємо наступний індекс
+                items[currentIndex].style.display = 'block'; // Показуємо наступне зображення
+            }
+    
+            // Функція, яка показує попередню фотографію
+            function showPrevItem() {
+                items[currentIndex].style.display = 'none'; // Приховуємо поточне зображення
+                currentIndex = (currentIndex - 1 + items.length) % items.length; // Обчислюємо попередній індекс
+                items[currentIndex].style.display = 'block'; // Показуємо попереднє зображення
+            }
+    
+            // Додаємо обробники подій на кліки кнопок
+            prevButton.addEventListener('click', showPrevItem);
+            nextButton.addEventListener('click', showNextItem);
+
+            items.forEach((item, index) => {
+            item.style.display = index === 0 ? 'block' : 'none';
+            });
+        </script>
+
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-copyright footer-col">
+                    <div class="footer-copyright-name">@ Arya Shekhar</div>
+                    <p>Turn your ideas in reality</p>
+                </div>
+
+                <div class="footer-icons footer-col">
+                    <p>Share your looks with us!</p>
+                    <div class="footer-icons-row">
+                        <img src="./img/footer/inst.svg" alt="">
+                        <img src="./img/footer/facebook.svg" alt="">
+                        <img src="./img/footer/twitter.svg" alt="">
+                    </div>
+                </div>
+
+                <div class="footer-contacts footer-col">
+                    <a href="#" class="footer-button">
+                        Contact with Gmail
+                    </a>
+                    <p>Email us for promoting purposes only.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+</body>
+</html>
